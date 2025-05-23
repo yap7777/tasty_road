@@ -1,6 +1,13 @@
 import React from 'react';
+import Comment from '../components/Comment';
+
 function HomePage() {
-  return <div>HomePage</div>;
+  return (
+    <div>
+      <Comment name="윤혜원" comment="맛있어요" rating={3} />
+      <Comment name="강효정" comment="괜찮네요" rating={3} />
+    </div>
+  );
 }
 
 export default HomePage;
