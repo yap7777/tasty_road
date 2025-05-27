@@ -25,6 +25,33 @@ app.get('/places', async (req, res) => {
   res.status(200).json({ places: placesData });
 });
 
+app.get('/places/:id', async (req, res) => {
+  const placeId = req.params.id;
+
+  try {
+    const [placesRaw, userPlacesRaw] = await Promise.all([
+      fs.readFile('./data/places.json', 'utf-8'),
+      fs.readFile('./data/user-places.json', 'utf-8'),
+    ]);
+
+    const placesData = JSON.parse(placesRaw);
+    const userPlaces = JSON.parse(userPlacesRaw);
+
+    const place = placesData.find((p) => p.id === placeId);
+
+    if (!place) {
+      return res.status(404).json({ message: 'Place not found.' });
+    }
+
+    const isSaved = userPlaces.some((p) => p.id === placeId);
+
+    res.status(200).json({ place, isSaved });
+  } catch (error) {
+    console.error('[GET /places/:id]', error.message);
+    res.status(500).json({ message: 'Failed to load place data.' });
+  }
+});
+
 app.get('/users/places', async (req, res) => {
   const fileContent = await fs.readFile('./data/user-places.json');
 
@@ -51,7 +78,6 @@ app.post('/users/places', async (req, res) => {
 
   res.status(200).json({ message: 'User place added/updated!' });
 });
-
 
 app.delete('/users/places/:id', async (req, res) => {
   const placeId = req.params.id;
