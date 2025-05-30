@@ -1,21 +1,36 @@
 import React from 'react';
 
-function Comment({ name, comment, profileImage }) {
+const Comment = ({ name, comment, rating }) => {
   return (
-    <div className="flex items-start bg-[#f5f3eb] p-4 rounded-xl shadow-sm justify-between w-full max-w-2xl mx-auto">
-      {/* 왼쪽: 프로필 + 텍스트 */}
-      <div className="flex items-start space-x-4">
-        {/* 프로필 이미지 */}
-        <img src={'/profile.jpeg'} alt={`${name}의 프로필`} className="w-10 h-10 rounded-full" />
-
-        {/* 텍스트 영역 */}
-        <div>
-          <p className="font-semibold text-sm text-gray-800">{name}</p>
-          <p className="text-sm text-gray-700 mt-1">{comment}</p>
+    <div className="bg-white rounded-lg p-4 shadow-sm">
+      <div className="flex items-center justify-between mb-2">
+        <div className="flex items-center gap-2">
+          <div className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center">
+            <span className="text-gray-600">👤</span>
+          </div>
+          <span className="font-semibold text-gray-800">{name}</span>
         </div>
+        <div className="flex items-center">
+          {[...Array(5)].map((_, index) => (
+            <span
+              key={index}
+              className={`text-lg ${
+                index < rating ? 'text-yellow-400' : 'text-gray-300'
+              }`}
+            >
+              ★
+            </span>
+          ))}
+        </div>
+      </div>
+      <p className="text-gray-600">{comment}</p>
+      <div className="flex items-center gap-4 mt-3 text-sm text-gray-500">
+        <button className="hover:text-gray-700">Like</button>
+        <button className="hover:text-gray-700">Reply</button>
+        <span>about 1 hour ago</span>
       </div>
     </div>
   );
-}
+};
 
 export default Comment;
