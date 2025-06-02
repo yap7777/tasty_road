@@ -36,7 +36,7 @@ const MyPage = () => {
 
       {/* 🧾 상단 텍스트 안내 */}
       <div className="text-center mt-8">
-        <h2 className="text-xl font-bold text-blue-700">TASTY ROAD</h2>
+        <h2 className="text-xl font-bold text-blue-600">TASTY ROAD</h2>
         <p className="text-lg font-bold text-[#222] mt-1">내가 찜한 맛집을 확인해보세요.</p>
       </div>
 

@@ -1,4 +1,3 @@
-// components/Card.jsx
 import React from 'react';
 
 // 📦 Card 컴포넌트는 이미지, 제목, 클릭 핸들러를 props로 받음
@@ -10,7 +9,11 @@ function Card({ imageSrc, name, handleCardClick }) {
       onClick={handleCardClick} // 👆 카드 클릭 시 실행될 함수
     >
       {/* 🖼️ 이미지 영역 */}
-      <img src={imageSrc} alt={name} className="w-full h-40 object-cover rounded-sm mb-2" />
+      <img
+        src={`http://localhost:3000/${imageSrc}`}
+        alt={`${name}의 프로필`}
+        className="w-full h-40 object-cover rounded-sm mb-2"
+      />
       {/* 🍽️ 식당 이름 */}
       <p className="text-sm font-medium text-gray-800">{name}</p>
     </div>
