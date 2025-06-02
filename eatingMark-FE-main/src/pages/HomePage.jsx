@@ -2,33 +2,23 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import Button from '../components/Button'; // 경로는 폴더 구조에 맞게 수정!
+import Header from '../components/Header'; // 경로는 폴더 구조에 맞게 수정!
 
 const Homepage = () => {
   const navigate = useNavigate();
 
   const goToLogin = () => {
+    // 네비게이트 사용해서 로그인으로 이동
     navigate('/login');
   };
 
   const goToSignup = () => {
+    // 네비게이트 사용해서 singup으로 이동
     navigate('/signup');
   };
 
   return (
-    <div className="min-h-screen bg-[#f6f4ef]">
-      {/* 상단 헤더 */}
-      <header className="flex justify-between items-center px-6 py-4 bg-[#817D73]">
-        <h1 className="text-white font-bold text-lg">TastyRoad</h1>
-        <div className="space-x-2">
-          <Button types="outlineLight" onClick={goToLogin}>
-            Log In
-          </Button>
-          <Button types="colorLight" onClick={goToSignup}>
-            Start Free Trial
-          </Button>
-        </div>
-      </header>
-
+    <div className="min-h-screen bg-[#F2EFE8]">
       {/* 메인 본문 */}
       <main className="flex flex-col md:flex-row items-center justify-between px-10 py-16 max-w-6xl mx-auto">
         {/* 왼쪽 설명 영역 */}
@@ -42,8 +32,9 @@ const Homepage = () => {
             잊고 싶지 않은 그 순간을 기록해보세요.
           </p>
           <div className="flex gap-4">
+            {/* 버튼컴포넌트넣기(로그인,회원가입버튼) */}
             <Button types="outlineDark" onClick={goToLogin}>
-              Log In
+              Log in
             </Button>
             <Button types="colorDark" onClick={goToSignup}>
               Signup
@@ -52,8 +43,11 @@ const Homepage = () => {
         </div>
 
         {/* 오른쪽 이미지 영역 */}
-        <div className="md:w-1/2 mt-10 md:mt-0 flex justify-center">
-          <img src="/logo.svg" alt="TastyRoad Logo" className="w-64" />
+        <div className="md:w-1/2 mt-10 md:mt-0 flex flex-col items-center">
+          <img
+            src="../public/로고이미지.svg" // public 폴더에 넣은 로고 이미지
+            alt="TastyRoad 로고 이미지" // 좀 더 구체적인 설명
+          />
         </div>
       </main>
     </div>

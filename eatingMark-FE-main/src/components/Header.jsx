@@ -18,7 +18,7 @@ const Header = () => {
       <Link to="/" className="text-2xl font-bold text-gray-800 no-underline">
         TastyRoad
       </Link>
-      
+
       {isLogin ? (
         <div className="flex items-center gap-4">
           <Link to="/main" className="px-4 py-2 text-gray-600 hover:text-gray-800 no-underline">
@@ -28,11 +28,15 @@ const Header = () => {
             마이페이지
           </Link>
           <button className="p-2 text-gray-600 hover:text-gray-800">
-            <span role="img" aria-label="notifications">🔔</span>
+            <span role="img" aria-label="notifications">
+              🔔
+            </span>
           </button>
           <button className="p-2 text-gray-600 hover:text-gray-800">
             <div className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center">
-              <span role="img" aria-label="profile">👤</span>
+              <span role="img" aria-label="profile">
+                👤
+              </span>
             </div>
           </button>
         </div>
@@ -50,4 +54,4 @@ const Header = () => {
   );
 };
 
-export default Header; 
+export default Header;
