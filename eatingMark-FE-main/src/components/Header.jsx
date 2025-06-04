@@ -21,7 +21,7 @@ const Header = () => {
 
       {isLogin ? (
         <div className="flex items-center gap-4">
-          <Link to="/main" className="px-4 py-2 text-gray-600 hover:text-gray-800 no-underline">
+          <Link to="/tastyroad" className="px-4 py-2 text-gray-600 hover:text-gray-800 no-underline">
             맛집 구경하기
           </Link>
           <Link to="/mypage" className="px-4 py-2 text-gray-600 hover:text-gray-800 no-underline">

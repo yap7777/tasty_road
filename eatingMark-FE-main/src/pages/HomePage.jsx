@@ -2,7 +2,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import Button from '../components/Button'; // 경로는 폴더 구조에 맞게 수정!
-import Header from '../components/Header'; // 경로는 폴더 구조에 맞게 수정!
 
 const Homepage = () => {
   const navigate = useNavigate();
@@ -45,7 +44,7 @@ const Homepage = () => {
         {/* 오른쪽 이미지 영역 */}
         <div className="md:w-1/2 mt-10 md:mt-0 flex flex-col items-center">
           <img
-            src="../public/로고이미지.svg" // public 폴더에 넣은 로고 이미지
+            src="/logo.svg" // public 폴더에 넣은 로고 이미지
             alt="TastyRoad 로고 이미지" // 좀 더 구체적인 설명
           />
         </div>
