@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import Button from '../components/Button';
+import { AuthContext } from '../contexts/AuthContext';
 
 const Header = () => {
-  const [isLogin, setIsLogin] = useState(true);
   const navigate = useNavigate();
+  const { isLoggedIn, setLogout } = useContext(AuthContext);
 
   const handleLoginClick = () => {
     navigate('/login');
@@ -13,13 +15,17 @@ const Header = () => {
     navigate('/signup');
   };
 
+  const handleLogoutClick = () => {
+    setLogout();
+  };
+
   return (
     <header className="flex justify-between items-center px-8 py-4 bg-white shadow-md">
       <Link to="/" className="text-2xl font-bold text-gray-800 no-underline">
         TastyRoad
       </Link>
 
-      {isLogin ? (
+      {isLoggedIn ? (
         <div className="flex items-center gap-4">
           <Link to="/tastyroad" className="px-4 py-2 text-gray-600 hover:text-gray-800 no-underline">
             맛집 구경하기
@@ -27,6 +33,9 @@ const Header = () => {
           <Link to="/mypage" className="px-4 py-2 text-gray-600 hover:text-gray-800 no-underline">
             마이페이지
           </Link>
+          <div onClick={handleLogoutClick} className="px-4 py-2 text-gray-600 hover:text-gray-800 no-underline">
+            로그아웃
+          </div>
           <button className="p-2 text-gray-600 hover:text-gray-800">
             <span role="img" aria-label="notifications">
               🔔

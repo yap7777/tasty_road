@@ -1,20 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Input from '../components/Input'; // input 컴포넌트 불러오기
 import { useSupabaseAuth } from '../supabase/auth'; // login 함수 불러오기
+import { AuthContext } from '../contexts/AuthContext';
 
 function LoginPage() {
   const [emailInput, setEmailInput] = useState('');
   const [passwordInput, setPasswordInput] = useState('');
+  const { login, getUserInfo } = useSupabaseAuth();
+  const { setLogin } = useContext(AuthContext);
 
   const navigate = useNavigate();
-  const { login } = useSupabaseAuth();
 
   const handleClickLoginButton = async () => {
     const { error } = await login({
       email: emailInput,
       password: passwordInput,
     });
+    setLogin();
 
     if (error) {
       alert(`❌ 로그인 실패: ${error.message}`);
@@ -22,7 +25,7 @@ function LoginPage() {
     }
 
     alert('✅ 로그인 성공! 메인 페이지로 이동합니다.');
-    navigate('/main');
+    navigate('/tastyroad');
   };
 
   return (
