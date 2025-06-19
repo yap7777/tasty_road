@@ -17,12 +17,15 @@ function LoginPage() {
       email: emailInput,
       password: passwordInput,
     });
-    setLogin();
+
+    console.log('로그인 시도 에러:', error);
 
     if (error) {
       alert(`❌ 로그인 실패: ${error.message}`);
       return;
     }
+
+    setLogin();
 
     alert('✅ 로그인 성공! 메인 페이지로 이동합니다.');
     navigate('/tastyroad');
