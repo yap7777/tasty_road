@@ -1,10 +1,5 @@
-import { useSupabase } from "..";
-import {
-  changeFromDto,
-  DTO_TYPE,
-  localStorageUtils,
-  USER_INFO_KEY,
-} from "../utilities";
+import { useSupabase } from '..';
+import { changeFromDto, DTO_TYPE, localStorageUtils, USER_INFO_KEY } from '../utilities';
 
 export const useEmailAuth = () => {
   const supabase = useSupabase();
@@ -17,8 +12,7 @@ export const useEmailAuth = () => {
         password,
         options: {
           data: {
-            avatar_url:
-              "https://cdn.pixabay.com/photo/2016/03/31/19/56/avatar-1295396_1280.png",
+            avatar_url: 'https://cdn.pixabay.com/photo/2016/03/31/19/56/avatar-1295396_1280.png',
             ...userData,
           },
         },
@@ -32,9 +26,7 @@ export const useEmailAuth = () => {
       if (userInfo.user) {
         setItemToLocalStorage(USER_INFO_KEY.customKey, userInfo);
       } else {
-        throw new Error(
-          `status: ${userInfo.error.status}, message: ${userInfo.error.message}`
-        );
+        throw new Error(`status: ${userInfo.error.status}, message: ${userInfo.error.message}`);
       }
       return userInfo;
     } catch (error) {
@@ -56,9 +48,7 @@ export const useEmailAuth = () => {
         setItemToLocalStorage(USER_INFO_KEY.customKey, userInfo);
         return userInfo;
       } else {
-        throw new Error(
-          `status: ${userInfo.error.status}, message: ${userInfo.error.message}`
-        );
+        throw new Error(`status: ${userInfo.error.status}, message: ${userInfo.error.message}`);
       }
     } catch (error) {
       throw new Error(error);
