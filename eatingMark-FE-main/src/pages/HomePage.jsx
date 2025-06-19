@@ -1,10 +1,11 @@
-// src/pages/Homepage.jsx
-import React from 'react';
+import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../contexts/AuthContext';
 import Button from '../components/Button'; // 경로는 폴더 구조에 맞게 수정!
 
 const Homepage = () => {
   const navigate = useNavigate();
+  const { isLoggedIn } = useContext(AuthContext);
 
   const goToLogin = () => {
     // 네비게이트 사용해서 로그인으로 이동
@@ -30,15 +31,20 @@ const Homepage = () => {
             <br />
             잊고 싶지 않은 그 순간을 기록해보세요.
           </p>
-          <div className="flex gap-4">
-            {/* 버튼컴포넌트넣기(로그인,회원가입버튼) */}
-            <Button types="outlineDark" onClick={goToLogin}>
-              Log in
+          {isLoggedIn ? (
+            <Button types="colorDark" onClick={() => navigate('/tastyroad')}>
+              시작하기
             </Button>
-            <Button types="colorDark" onClick={goToSignup}>
-              Signup
-            </Button>
-          </div>
+          ) : (
+            <div className="flex gap-4">
+              <Button types="outlineDark" onClick={() => navigate('/login')}>
+                Log In
+              </Button>
+              <Button types="colorDark" onClick={() => navigate('/signup')}>
+                Signup
+              </Button>
+            </div>
+          )}
         </div>
 
         {/* 오른쪽 이미지 영역 */}
